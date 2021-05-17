@@ -2,9 +2,9 @@ package org.knowm.xchange.bitbns.service;
 
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitbns.Pdax;
-import org.knowm.xchange.bitbns.dto.PdaxException;
 import org.knowm.xchange.bitbns.dto.BitbnsHmacPostBodyDigest;
 import org.knowm.xchange.bitbns.dto.BitbnsPayloadDigest;
+import org.knowm.xchange.bitbns.dto.PdaxException;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.exceptions.FundsExceededException;
 import org.knowm.xchange.service.BaseExchangeService;
@@ -22,8 +22,7 @@ public class BitbnsBaseService extends BaseExchangeService implements BaseServic
   protected BitbnsBaseService(Exchange exchange) {
     super(exchange);
     pdax =
-        RestProxyFactory.createProxy(
-            Pdax.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+        RestProxyFactory.createProxy(Pdax.class, exchange.getExchangeSpecification().getSslUri());
 
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
     this.signatureCreator =

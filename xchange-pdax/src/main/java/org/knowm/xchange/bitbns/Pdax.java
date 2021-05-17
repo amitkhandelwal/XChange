@@ -1,7 +1,6 @@
 package org.knowm.xchange.bitbns;
 
 import java.io.IOException;
-
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.HeaderParam;
@@ -10,17 +9,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
-
-import org.knowm.xchange.bitbns.dto.BitbnsOrderStatusResponse;
-import org.knowm.xchange.bitbns.dto.OrderStatusBody;
 import org.knowm.xchange.bitbns.dto.PadxNewOrderRequest;
-import org.knowm.xchange.bitbns.dto.PdaxCancelData;
 import org.knowm.xchange.bitbns.dto.PdaxCancleOrderResponse;
 import org.knowm.xchange.bitbns.dto.PdaxOrder;
 import org.knowm.xchange.bitbns.dto.PdaxOrderBooks;
 import org.knowm.xchange.bitbns.dto.PdaxOrderPlaceStatusResponse;
 import org.knowm.xchange.bitbns.dto.PdaxTickerData;
-
 import si.mazi.rescu.ParamsDigest;
 
 @Path("/")
@@ -43,7 +37,7 @@ public interface Pdax {
       @HeaderParam("Access-Key") String apikey,
       @HeaderParam("Access-Signature") ParamsDigest payload,
       PadxNewOrderRequest newOrderRequest);
-  
+
   @POST
   @Path("/v1/order/{orderId}")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -52,7 +46,6 @@ public interface Pdax {
       @HeaderParam("Access-Signature") ParamsDigest payload,
       @PathParam("orderId") String orderId);
 
-  
   @POST
   @Path("/v1/order/{orderId}/cancel")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
@@ -60,5 +53,4 @@ public interface Pdax {
       @HeaderParam("Access-Key") String apikey,
       @HeaderParam("Access-Signature") ParamsDigest payload,
       @PathParam("orderId") String orderId);
-
 }

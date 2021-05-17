@@ -2,7 +2,6 @@ package org.knowm.xchange.bitbns.service;
 
 import java.io.IOException;
 import java.util.Collection;
-
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitbns.PdaxAdapters;
 import org.knowm.xchange.bitbns.dto.BitbnsLimitOrder;
@@ -31,7 +30,7 @@ public class PdaxTradeService extends PdaxTradeServiceRaw implements TradeServic
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
 
-	 PdaxOrderPlaceStatusResponse newOrder = placeCoindcxLimitOrder(limitOrder);
+    PdaxOrderPlaceStatusResponse newOrder = placeCoindcxLimitOrder(limitOrder);
 
     // The return value contains details of any trades that have been immediately executed as a
     // result
@@ -46,16 +45,16 @@ public class PdaxTradeService extends PdaxTradeServiceRaw implements TradeServic
 
   @Override
   public boolean cancelOrder(String orderId) throws IOException {
-	  PdaxCancleOrderResponse orderResponse=  cancelOrderById(orderId);
-	  if(orderResponse.getData().getStatus().equals("CANCEL_REQUEST_SUBMITTED")){
-//		  Cancel request is received and order should be cancelled
-		  return true;
-	  }else if(orderResponse.getData().getStatus().equals("ORDER_CANCEL_WRONG_STATE")){
-//		  Order cannot be cancelled. This may be caused by the order being matched/traded already
-		  return false;
-	  }else if(orderResponse.getData().getStatus().equals("ORDER_NOT_FOUND")){
-		  throw new PdaxException("Order does not exist");
-	  }
+    PdaxCancleOrderResponse orderResponse = cancelOrderById(orderId);
+    if (orderResponse.getData().getStatus().equals("CANCEL_REQUEST_SUBMITTED")) {
+      //		  Cancel request is received and order should be cancelled
+      return true;
+    } else if (orderResponse.getData().getStatus().equals("ORDER_CANCEL_WRONG_STATE")) {
+      //		  Order cannot be cancelled. This may be caused by the order being matched/traded already
+      return false;
+    } else if (orderResponse.getData().getStatus().equals("ORDER_NOT_FOUND")) {
+      throw new PdaxException("Order does not exist");
+    }
     return false;
   }
 
@@ -67,11 +66,9 @@ public class PdaxTradeService extends PdaxTradeServiceRaw implements TradeServic
       return false;
     }
   }
-  
-  @Override
-	public Collection<Order> getOrder(String... orderIds) throws IOException {
-	  	return PdaxAdapters.adaptOrders(getorderByOrderId(orderIds));
-	}
 
-  
+  @Override
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
+    return PdaxAdapters.adaptOrders(getorderByOrderId(orderIds));
+  }
 }

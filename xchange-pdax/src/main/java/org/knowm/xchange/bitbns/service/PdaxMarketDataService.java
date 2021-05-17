@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.bitbns.dto.Asks;
 import org.knowm.xchange.bitbns.dto.PdaxOrderBooks;
@@ -19,8 +18,7 @@ import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.service.marketdata.params.Params;
 
-public class PdaxMarketDataService extends BitbnsMarketDataServiceRaw
-    implements MarketDataService {
+public class PdaxMarketDataService extends BitbnsMarketDataServiceRaw implements MarketDataService {
 
   public PdaxMarketDataService(Exchange exchange) {
     super(exchange);
@@ -31,12 +29,14 @@ public class PdaxMarketDataService extends BitbnsMarketDataServiceRaw
     PdaxOrderBooks orderBook = getBitbnsOrderBook(currencyPair, args);
     List<LimitOrder> asks = new ArrayList<>();
     for (Asks e : orderBook.getData().getAsks()) {
-    	asks.add(new LimitOrder(OrderType.BID, e.getAmount(), currencyPair, null, null, e.getPrice()));
+      asks.add(
+          new LimitOrder(OrderType.BID, e.getAmount(), currencyPair, null, null, e.getPrice()));
     }
 
     List<LimitOrder> bids = new ArrayList<>();
     for (Asks e : orderBook.getData().getBids()) {
-    	bids.add(new LimitOrder(OrderType.ASK, e.getAmount(), currencyPair, null, null, e.getPrice()));
+      bids.add(
+          new LimitOrder(OrderType.ASK, e.getAmount(), currencyPair, null, null, e.getPrice()));
     }
 
     return new OrderBook(new Date(orderBook.getData().getNow()), asks, bids);
@@ -50,7 +50,7 @@ public class PdaxMarketDataService extends BitbnsMarketDataServiceRaw
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
-	PdaxTickerData bitbnsTicker = getBitbnsTicker(currencyPair, args);
+    PdaxTickerData bitbnsTicker = getBitbnsTicker(currencyPair, args);
     return new Ticker.Builder()
         .instrument(currencyPair)
         .high(bitbnsTicker.getData().getHigh().getValue())
