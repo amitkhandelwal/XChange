@@ -1,99 +1,110 @@
 package org.knowm.xchange.bitbns.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import java.math.BigDecimal;
 import java.util.UUID;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-
 public class PdaxOrderTrades {
 
-	private UUID tradeId;
-	private long timestamp;
-	private BigDecimal tradedCurrencyFillAmount;
-	private BigDecimal settlementCurrencyFillAmount;
-	private BigDecimal settlementCurrencyFillAmountUnrounded;
-	private BigDecimal price;
-	private String side;
-	
-	public PdaxOrderTrades(@JsonProperty("trade_id") UUID tradeId,
-			@JsonProperty("timestamp") long timestamp,
-			@JsonProperty("traded_currency_fill_amount") BigDecimal tradedCurrencyFillAmount,
-			@JsonProperty("settlement_currency_fill_amount") BigDecimal settlementCurrencyFillAmount,
-			@JsonProperty("settlement_currency_fill_amount_unrounded") BigDecimal settlementCurrencyFillAmountUnrounded,
-			@JsonProperty("price") BigDecimal price,
-			@JsonProperty("side") String side
-			) {
-		 this.tradeId=tradeId;
-		 this.timestamp=timestamp;
-		 this.tradedCurrencyFillAmount=tradedCurrencyFillAmount;
-		 this.settlementCurrencyFillAmount=settlementCurrencyFillAmount;
-		 this.settlementCurrencyFillAmountUnrounded=settlementCurrencyFillAmountUnrounded;
-		 this.price=price;
-		 this.side=side;
-	}
+  private UUID tradeId;
+  private long timestamp;
+  private BigDecimal tradedCurrencyFillAmount;
+  private BigDecimal settlementCurrencyFillAmount;
+  private BigDecimal settlementCurrencyFillAmountUnrounded;
+  private BigDecimal price;
+  private String side;
 
-	public UUID getTradeId() {
-		return tradeId;
-	}
+  public PdaxOrderTrades(
+      @JsonProperty("trade_id") UUID tradeId,
+      @JsonProperty("timestamp") long timestamp,
+      @JsonProperty("traded_currency_fill_amount") BigDecimal tradedCurrencyFillAmount,
+      @JsonProperty("settlement_currency_fill_amount") BigDecimal settlementCurrencyFillAmount,
+      @JsonProperty("settlement_currency_fill_amount_unrounded")
+          BigDecimal settlementCurrencyFillAmountUnrounded,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("side") String side) {
+    this.tradeId = tradeId;
+    this.timestamp = timestamp;
+    this.tradedCurrencyFillAmount = tradedCurrencyFillAmount;
+    this.settlementCurrencyFillAmount = settlementCurrencyFillAmount;
+    this.settlementCurrencyFillAmountUnrounded = settlementCurrencyFillAmountUnrounded;
+    this.price = price;
+    this.side = side;
+  }
 
-	public void setTradeId(UUID tradeId) {
-		this.tradeId = tradeId;
-	}
+  public UUID getTradeId() {
+    return tradeId;
+  }
 
-	public long getTimestamp() {
-		return timestamp;
-	}
+  public void setTradeId(UUID tradeId) {
+    this.tradeId = tradeId;
+  }
 
-	public void setTimestamp(long timestamp) {
-		this.timestamp = timestamp;
-	}
+  public long getTimestamp() {
+    return timestamp;
+  }
 
-	public BigDecimal getTradedCurrencyFillAmount() {
-		return tradedCurrencyFillAmount;
-	}
+  public void setTimestamp(long timestamp) {
+    this.timestamp = timestamp;
+  }
 
-	public void setTradedCurrencyFillAmount(BigDecimal tradedCurrencyFillAmount) {
-		this.tradedCurrencyFillAmount = tradedCurrencyFillAmount;
-	}
+  public BigDecimal getTradedCurrencyFillAmount() {
+    return tradedCurrencyFillAmount;
+  }
 
-	public BigDecimal getSettlementCurrencyFillAmount() {
-		return settlementCurrencyFillAmount;
-	}
+  public void setTradedCurrencyFillAmount(BigDecimal tradedCurrencyFillAmount) {
+    this.tradedCurrencyFillAmount = tradedCurrencyFillAmount;
+  }
 
-	public void setSettlementCurrencyFillAmount(BigDecimal settlementCurrencyFillAmount) {
-		this.settlementCurrencyFillAmount = settlementCurrencyFillAmount;
-	}
+  public BigDecimal getSettlementCurrencyFillAmount() {
+    return settlementCurrencyFillAmount;
+  }
 
-	public BigDecimal getSettlementCurrencyFillAmountUnrounded() {
-		return settlementCurrencyFillAmountUnrounded;
-	}
+  public void setSettlementCurrencyFillAmount(BigDecimal settlementCurrencyFillAmount) {
+    this.settlementCurrencyFillAmount = settlementCurrencyFillAmount;
+  }
 
-	public void setSettlementCurrencyFillAmountUnrounded(BigDecimal settlementCurrencyFillAmountUnrounded) {
-		this.settlementCurrencyFillAmountUnrounded = settlementCurrencyFillAmountUnrounded;
-	}
+  public BigDecimal getSettlementCurrencyFillAmountUnrounded() {
+    return settlementCurrencyFillAmountUnrounded;
+  }
 
-	public BigDecimal getPrice() {
-		return price;
-	}
+  public void setSettlementCurrencyFillAmountUnrounded(
+      BigDecimal settlementCurrencyFillAmountUnrounded) {
+    this.settlementCurrencyFillAmountUnrounded = settlementCurrencyFillAmountUnrounded;
+  }
 
-	public void setPrice(BigDecimal price) {
-		this.price = price;
-	}
+  public BigDecimal getPrice() {
+    return price;
+  }
 
-	public String getSide() {
-		return side;
-	}
+  public void setPrice(BigDecimal price) {
+    this.price = price;
+  }
 
-	public void setSide(String side) {
-		this.side = side;
-	}
+  public String getSide() {
+    return side;
+  }
 
-	@Override
-	public String toString() {
-		return "PdaxOrderTrades [tradeId=" + tradeId + ", timestamp=" + timestamp + ", tradedCurrencyFillAmount="
-				+ tradedCurrencyFillAmount + ", settlementCurrencyFillAmount=" + settlementCurrencyFillAmount
-				+ ", settlementCurrencyFillAmountUnrounded=" + settlementCurrencyFillAmountUnrounded + ", price="
-				+ price + ", side=" + side + "]";
-	}
+  public void setSide(String side) {
+    this.side = side;
+  }
 
+  @Override
+  public String toString() {
+    return "PdaxOrderTrades [tradeId="
+        + tradeId
+        + ", timestamp="
+        + timestamp
+        + ", tradedCurrencyFillAmount="
+        + tradedCurrencyFillAmount
+        + ", settlementCurrencyFillAmount="
+        + settlementCurrencyFillAmount
+        + ", settlementCurrencyFillAmountUnrounded="
+        + settlementCurrencyFillAmountUnrounded
+        + ", price="
+        + price
+        + ", side="
+        + side
+        + "]";
+  }
 }
