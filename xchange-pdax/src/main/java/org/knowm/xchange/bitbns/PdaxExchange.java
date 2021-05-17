@@ -3,15 +3,15 @@ package org.knowm.xchange.bitbns;
 import org.knowm.xchange.BaseExchange;
 import org.knowm.xchange.Exchange;
 import org.knowm.xchange.ExchangeSpecification;
-import org.knowm.xchange.bitbns.service.PdaxTradeService;
 import org.knowm.xchange.bitbns.service.PdaxMarketDataService;
-import org.knowm.xchange.utils.nonce.CurrentTimeNonceFactory;
-
+import org.knowm.xchange.bitbns.service.PdaxTradeService;
+import org.knowm.xchange.utils.nonce.TimestampIncrementingNonceFactory;
 import si.mazi.rescu.SynchronizedValueFactory;
 
 public class PdaxExchange extends BaseExchange implements Exchange {
 
-  private final SynchronizedValueFactory<Long> nonceFactory = new CurrentTimeNonceFactory();
+  private final SynchronizedValueFactory<Long> nonceFactory =
+      new TimestampIncrementingNonceFactory();
 
   @Override
   public SynchronizedValueFactory<Long> getNonceFactory() {
